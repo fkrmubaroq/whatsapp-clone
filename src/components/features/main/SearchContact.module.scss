@@ -1,0 +1,14 @@
+.arrow-icon, .search-icon{
+  @apply transition-all duration-150 ;
+}
+.search-input:focus{
+  ~ .icon-container{
+    .search-icon{
+      @apply opacity-0;
+    }
+    .arrow-icon{      
+      @apply opacity-100 rotate-90;
+    }
+
+  }
+}
