@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#main{
+  display: grid;
+  grid-template-areas: "sidebar header-chat"
+                       "sidebar chat";
+  grid-template-columns: minmax(350px, 450px) 1fr;
+  grid-template-rows:60px 1fr ;
+  min-height: 100dvh;
+  
+  #sidebar{
+    grid-area: sidebar;
+    @apply bg-gray-50;
+  }
+  
+  #header-chat{
+    grid-area: header-chat;
+    @apply bg-gray-200;
+  
+  }
+  
+  #chat{
+    grid-area: chat;
+    @apply bg-red-300;
+  }
+}
