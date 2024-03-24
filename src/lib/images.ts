@@ -1,0 +1,1 @@
+export const bgChat = "/images/bg-chat.png";

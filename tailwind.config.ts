@@ -9,7 +9,9 @@ const config: Config = {
         secondary: "#128c7e",
         "dark-green": "#128c7e",
         "light-gray": "#F0F2F5",
-        "light-green": "#dcf8c6",
+        placeholder: "#667781",
+        "light-blue": "#34B7F1",
+        "light-green": "#d9fdd3",
         background: "#ece5dd",
       },
       backgroundImage: {

@@ -4,6 +4,8 @@ import { PiCircleDashedBold } from "react-icons/pi";
 import { RiChatNewLine } from "react-icons/ri";
 import { SlOptionsVertical } from "react-icons/sl";
 import { TbUsersGroup } from "react-icons/tb";
+import { DropdownOptions } from "./DropdownOptions";
+import { DropdownOptionItem } from "./types";
 
 type ActionNameType = "group-community" | "status" | "new-chat" | "options";
 type ActionListType = {
@@ -28,6 +30,27 @@ const actionList: ActionListType[] = [
     icon: <SlOptionsVertical size={17} />,
   },
 ];
+
+
+const dropdownActionList:DropdownOptionItem[] = [
+  {
+    name: "Grup Baru",
+  },
+  {
+    name: "Pesan Berbintang",
+  },
+  {
+    name: "Pilih Chat",
+  },
+  {
+    name: "Pengaturan",
+  },
+  {
+    name: "Keluar",
+  },
+];
+
+
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<ActionNameType>();
 
@@ -66,38 +89,10 @@ function Actions({
             key={key}
           >
             {action.icon}
-            {optionIsClicked && <DropdownOptions />}
+            {optionIsClicked && <DropdownOptions data={dropdownActionList} />}
           </div>
         );
       })}
-    </div>
-  );
-}
-
-const dropdownActionList = [
-  {
-    name: "Grup Baru",
-  },
-  {
-    name: "Pesan Berbintang",
-  },
-  {
-    name: "Pilih Chat",
-  },
-  {
-    name: "Pengaturan",
-  },
-  {
-    name: "Keluar",
-  },
-];
-
-function DropdownOptions() {
-  return (
-    <div className="bg-white shadow-md absolute top-10 right-0 w-[200px] py-2">
-      {dropdownActionList.map((action, key) => (
-        <div key={key} className="flex items-center text-sm h-10 px-6 hover:bg-gray-100">{action.name}</div>
-      ))}
     </div>
   );
 }

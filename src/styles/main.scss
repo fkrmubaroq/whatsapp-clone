@@ -1,27 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-#main{
+html,
+body {
+  @apply tracking-normal;
+}
+#main {
   display: grid;
-  grid-template-areas: "sidebar header-chat"
-                       "sidebar chat";
+  grid-template-areas:
+    "sidebar header-chat"
+    "sidebar chat";
   grid-template-columns: minmax(350px, 450px) 1fr;
-  grid-template-rows:60px 1fr ;
+  grid-template-rows: 60px 1fr;
   min-height: 100dvh;
-  
-  #sidebar{
+  @apply inset-0 fixed;
+
+  #sidebar {
     grid-area: sidebar;
     @apply bg-gray-50;
   }
-  
-  #header-chat{
+
+  #header-chat {
     grid-area: header-chat;
-    @apply bg-gray-200;
-  
+    @apply w-full;
   }
-  
-  #chat{
+
+  #chat {
     grid-area: chat;
-    @apply bg-red-300;
+    @apply relative;
+    .background {
+      @apply bg-cover;
+      &::after {
+        background-image: url("/images/bg-chat.png");
+        content: "";
+        @apply w-full top-0 bottom-0 block absolute opacity-40;
+      }
+    }
+    &::before {
+      content: "";
+      @apply bg-background/70 block absolute inset-0;
+    }
   }
+}
+
+.editor{
+  @apply text-[#3B4A54];
+  strong{
+    @apply font-bold;
+  }
+}
+
+.caret-chat-left{
+  &::before{
+    display: block;
+    content: "";
+    @apply absolute top-[0px] left-[-10px] w-1 border-t-[10px] border-l-[10px] border-r-[1px]  border-t-white border-l-transparent border-r-white;
+  }
+  + .caret-chat-left{
+    @apply px-2 py-1.5;
+    &::before{
+
+      @apply hidden;
+    }
+  }
+  + .caret-chat-right{
+    @apply mt-4;
+  }
+}
+.caret-chat-right{
+  &::before{
+    display: block;
+    content: "";
+    @apply absolute top-[0px] right-[-10px] w-1 border-t-[10px] border-l-[1px] border-r-[10px] border-r-transparent  border-l-light-green  border-t-light-green;
+  }
+  + .caret-chat-right{
+    @apply px-2 py-1.5;
+    &::before{
+
+      @apply hidden;
+    }
+  }
+  + .caret-chat-left{
+    @apply mt-4;
+  }
+
+}
+
+[data-placeholder]:empty:before{
+  content: attr(data-placeholder);
+  @apply text-placeholder font-light;
 }

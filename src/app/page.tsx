@@ -1,6 +1,6 @@
-import Archieve from "@/components/features/main/Archieve";
+import Archive from "@/components/features/main/Archive";
+import Chat from "@/components/features/main/Chat";
 import ContactList from "@/components/features/main/ContactList";
-import ConversationChat from "@/components/features/main/ConversationChat";
 import Header from "@/components/features/main/Header";
 import HeaderChat from "@/components/features/main/HeaderChat";
 import SearchContact from "@/components/features/main/SearchContact";
@@ -11,14 +11,19 @@ export default function Home() {
       <div id="sidebar">
         <Header />
         <SearchContact />
-        <Archieve />
-        <ContactList />
+        <div
+          className="overflow-auto h-[calc(100%-108px)]"
+          id="wrapper-contacts"
+        >
+          <Archive />
+          <ContactList />
+        </div>
       </div>
       <div id="header-chat">
         <HeaderChat />
       </div>
       <div id="chat">
-        <ConversationChat />
+        <Chat />
       </div>
     </main>
   );
